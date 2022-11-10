@@ -68,7 +68,7 @@ namespace libreria
                     return "┌───────┐\n" + "│" + cont + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│" + "Diamantes" + "|\n" + "└───────┘"; break;
 
                 case ePalo.Picas:
-                    return "┌───────┐\n" + "│" + cont + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│  " + "Picas" + "|\n" + "└───────┘";
+                    return "┌───────┐\n" + "│" + cont + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│  " + "Picas" + "|\n" + "└───────┘"; break;
             }
             return "fin de la baraja";
         }
