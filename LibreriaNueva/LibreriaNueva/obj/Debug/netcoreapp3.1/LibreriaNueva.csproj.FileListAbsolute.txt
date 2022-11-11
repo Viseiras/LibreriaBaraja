@@ -1,0 +1,14 @@
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\bin\Debug\netcoreapp3.1\LibreriaNueva.exe
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\bin\Debug\netcoreapp3.1\LibreriaNueva.deps.json
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\bin\Debug\netcoreapp3.1\LibreriaNueva.runtimeconfig.json
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\bin\Debug\netcoreapp3.1\LibreriaNueva.runtimeconfig.dev.json
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\bin\Debug\netcoreapp3.1\LibreriaNueva.dll
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\bin\Debug\netcoreapp3.1\LibreriaNueva.pdb
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\obj\Debug\netcoreapp3.1\LibreriaNueva.csproj.AssemblyReference.cache
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\obj\Debug\netcoreapp3.1\LibreriaNueva.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\obj\Debug\netcoreapp3.1\LibreriaNueva.AssemblyInfoInputs.cache
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\obj\Debug\netcoreapp3.1\LibreriaNueva.AssemblyInfo.cs
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\obj\Debug\netcoreapp3.1\LibreriaNueva.csproj.CoreCompileInputs.cache
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\obj\Debug\netcoreapp3.1\LibreriaNueva.dll
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\obj\Debug\netcoreapp3.1\LibreriaNueva.pdb
+C:\Users\ciclosm\Desktop\LibreriaNueva\LibreriaNueva\obj\Debug\netcoreapp3.1\LibreriaNueva.genruntimeconfig.cache
