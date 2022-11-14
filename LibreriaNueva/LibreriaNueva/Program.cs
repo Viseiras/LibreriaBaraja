@@ -94,6 +94,7 @@ namespace libreriaNueva
     public class Baraja
     {
         private List<Carta> baraja; //la sintaxis es List<Carta> baraja = new List<Carta>(tamaño);
+        private int contPedidos=0;
 
         //constructores
         public Baraja()
@@ -123,21 +124,9 @@ namespace libreriaNueva
         }
 
         public Carta PideCarta()
-        {
-            String s = " ";
-            Carta c = null;
-            for (int i = 0; i < baraja.Count && s!="n"; i++)
-            {
-                Console.WriteLine("Quieres una carta? s/n");
-                
-            
-                if (s=="s")
-                {
-                    s = Console.ReadLine();
-                    c = baraja[i];
-                }
-            }
-            return c;
+        {    
+            contPedidos++;
+            return baraja[contPedidos];
         }
 
         public void MezclaBaraja()
