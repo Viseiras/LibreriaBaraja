@@ -131,6 +131,7 @@ namespace libreriaNueva
 
         public void MezclaBaraja()
         {
+            contPedidos=0;
             var random = new Random();
             //int indice = random.Next(1,baraja.Count);
 
@@ -156,9 +157,14 @@ namespace libreriaNueva
             Baraja baraja = new Baraja();
             baraja.RellenaBaraja();
             baraja.MezclaBaraja();
-            baraja.MuestraCartas();
-            Carta c=baraja.PideCarta();
-            c.MuestraCarta();
+            //baraja.MuestraCartas();
+            for(int i=0; i<51;i++)
+            {
+                Console.WriteLine("Dame una carta:");
+                Console.ReadLine();
+                Carta c=baraja.PideCarta();
+                Console.WriteLine(c.MuestraCarta());
+            }
             //baraja.MuestraCartas();
         }
     }
