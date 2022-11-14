@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
-using System.Collections;
-using libreria;
+using System.Collections.Generic;
+using libreriaNueva;
 
-namespace libreria
+namespace libreriaNueva
 {
     public enum ePalo
     {
@@ -44,40 +44,58 @@ namespace libreria
         }
         public Carta()
         {
-            
+
         }
+
+        public int getPalo()
+        {
+            return (int)palo;
+        }
+        
+        public int getValor()
+        {
+            return (int)valor;
+        }
+
+
 
         //métodos
         public String MuestraCarta()
         {
-            int cont = 1;
-            /*
-            char p = 'T';
-            int v = 4;
 
-            return "┌───────┐\n" + "│" + v + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│      " + p + "|\n" + "└───────┘";*/
-            switch(palo)
+            int p = getPalo();
+            int v = getValor();
+            char simbolo  = ' ';//♠', '♦', '♥', '♣
+
+            switch (p)
             {
-                case ePalo.Treboles:
-                    return "┌───────┐\n" + "│" + cont + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│" + "Tréboles" + "|\n" + "└───────┘"; break;
-
-                case ePalo.Corazones:
-                    return "┌───────┐\n" + "│" + cont + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│" + "Corazones" + "|\n" + "└───────┘"; break;
-
-                case ePalo.Diamantes:
-                    return "┌───────┐\n" + "│" + cont + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│" + "Diamantes" + "|\n" + "└───────┘"; break;
-
-                case ePalo.Picas:
-                    return "┌───────┐\n" + "│" + cont + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│  " + "Picas" + "|\n" + "└───────┘"; break;
+                case 0:
+                    simbolo  = '♣';
+                    break;
+                case 1:
+                    simbolo = '♥';
+                    break;
+                case 2:
+                    simbolo = '♦';
+                    break;
+                case 3:
+                    simbolo ='♠';
+                    break;
             }
-            return "fin de la baraja";
+
+            if  (v  >  9)
+            {
+                return "┌───────┐\n" + "│" + v + "     |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│      " + simbolo + "|\n" + "└───────┘\n";
+            }
+            return "┌───────┐\n" + "│" + v + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│      " + simbolo + "|\n" + "└───────┘";
         }
     } //fin de la clase Carta
-
+   
     public class Baraja
     {
         private List<Carta> baraja; //la sintaxis es List<Carta> baraja = new List<Carta>(tamaño);
-        
+        private int contPedidos=0;
+
         //constructores
         public Baraja()
         {
@@ -99,9 +117,33 @@ namespace libreria
 
         public void MuestraCartas()
         {
-            foreach(Carta c in baraja)
+            for(int i=0;i<baraja.Count;i++)
             {
-                Console.WriteLine(c.MuestraCarta());   
+                Console.WriteLine(baraja[i].MuestraCarta());
+            }
+        }
+
+        public Carta PideCarta()
+        {    
+            contPedidos++;
+            return baraja[contPedidos];
+        }
+
+        public void MezclaBaraja()
+        {
+            var random = new Random();
+            //int indice = random.Next(1,baraja.Count);
+
+            Carta aux;   
+
+            for  (int i  =  0;  i  <  baraja.Count;  i++)
+            {
+                //int a1 = random.Next(1,52);
+                int a2 = random.Next(1,52);
+
+                aux = baraja[i];
+                baraja[i] = baraja[a2];
+                baraja[a2] = aux;
             }
         }
 
@@ -113,7 +155,11 @@ namespace libreria
         {
             Baraja baraja = new Baraja();
             baraja.RellenaBaraja();
+            baraja.MezclaBaraja();
             baraja.MuestraCartas();
+            Carta c=baraja.PideCarta();
+            c.MuestraCarta();
+            //baraja.MuestraCartas();
         }
     }
 }
