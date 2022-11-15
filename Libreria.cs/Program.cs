@@ -60,36 +60,7 @@ namespace libreriaNueva
 
 
         //métodos
-        public String MuestraCartaVertical()
-        {
-
-            int p = getPalo();
-            int v = getValor();
-            char simbolo  = ' ';//♠', '♦', '♥', '♣
-
-            switch (p)
-            {
-                case 0:
-                    simbolo  = '♣';
-                    break;
-                case 1:
-                    simbolo = '♥';
-                    break;
-                case 2:
-                    simbolo = '♦';
-                    break;
-                case 3:
-                    simbolo ='♠';
-                    break;
-            }
-
-            if  (v  >  9)
-            {
-                return "┌───────┐\n" + "│" + v + "     |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│      " + simbolo + "|\n" + "└───────┘\n";
-            }
-            return "┌───────┐\n" + "│" + v + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│      " + simbolo + "|\n" + "└───────┘\n";
-        }
-        public void MuestraCartaHorizontal(int numC)
+        public String MuestraCarta()
         {
 
             int p = getPalo();
@@ -148,8 +119,70 @@ namespace libreriaNueva
         {
             for(int i=0;i<baraja.Count;i++)
             {
-                Console.WriteLine(baraja[i].MuestraCartaVertical());
+                Console.WriteLine(baraja[i].MuestraCarta());
             }
+        }
+
+        public String MuestraCartasHorizontal(int numC)
+        {   
+            String lineaCarta="";
+
+            int p=3;
+            int v=9;
+            char simbolo  = ' ';//♠', '♦', '♥', '♣
+
+            
+
+            for(int i=0; i<numC;i++)
+                lineaCarta=lineaCarta+"┌───────┐";
+            lineaCarta=lineaCarta+"\n";
+
+            for(int i=0;i<numC;i++)
+            {
+                //v = getValor();
+                if  (v  >  9)
+                    lineaCarta=lineaCarta+"│" + v + "     |";  
+                else
+                    lineaCarta=lineaCarta+"│" + v + "      |";   
+            }
+            lineaCarta=lineaCarta+"\n";
+
+            for(int i=0;i<(numC*3);i++)
+            {
+                if(i%numC!=numC-1)
+                    lineaCarta=lineaCarta+"│       |";
+                else
+                    lineaCarta=lineaCarta+"│       |\n";
+            }
+        
+            for(int i=0;i<numC;i++)
+            {
+                //p= getPalo();
+                //Nos dice el palo que tiene la carta cambiandolo a char
+                switch (p)
+                {
+                    case 0:
+                        simbolo  = '♣';
+                        break;
+                    case 1:
+                        simbolo = '♥';
+                        break;
+                    case 2:
+                        simbolo = '♦';
+                        break;
+                    case 3:
+                        simbolo ='♠';
+                        break;
+                }
+                lineaCarta=lineaCarta+"│      " + simbolo + "|";
+            }
+            lineaCarta=lineaCarta+"\n";
+
+            for(int i=0; i<numC;i++)
+                lineaCarta=lineaCarta+"└───────┘";
+            lineaCarta=lineaCarta+"\n";
+
+            return lineaCarta;
         }
 
         public Carta PideCarta()
@@ -191,7 +224,7 @@ namespace libreriaNueva
     {
         static void Main(string[] args)
         {
-            Baraja baraja = new Baraja();
+            /*Baraja baraja = new Baraja();
             baraja.RellenaBaraja();
             baraja.MezclaBaraja();
             //baraja.MuestraCartas();
@@ -204,9 +237,14 @@ namespace libreriaNueva
                 Console.ReadLine();
                 c=baraja.PideCarta();
                 if(c!=null)
-                    Console.WriteLine(c.MuestraCartaVertical());
+                    Console.WriteLine(c.MuestraCarta());
             }
-            //baraja.MuestraCartas();
+            //baraja.MuestraCartas();*/
+            Baraja baraja = new Baraja();
+            baraja.RellenaBaraja();
+            baraja.MezclaBaraja();
+
+            Console.WriteLine(baraja.MuestraCartasHorizontal(5));
         }
     }
 } 
