@@ -127,11 +127,9 @@ namespace libreriaNueva
         {   
             String lineaCarta="";
 
-            int p=3;
-            int v=9;
+            int p;
+            int v;
             char simbolo  = ' ';//♠', '♦', '♥', '♣
-
-            
 
             for(int i=0; i<numC;i++)
                 lineaCarta=lineaCarta+"┌───────┐";
@@ -139,7 +137,7 @@ namespace libreriaNueva
 
             for(int i=0;i<numC;i++)
             {
-                //v = getValor();
+                v = baraja[i].getValor();
                 if  (v  >  9)
                     lineaCarta=lineaCarta+"│" + v + "     |";  
                 else
@@ -157,8 +155,8 @@ namespace libreriaNueva
         
             for(int i=0;i<numC;i++)
             {
-                //p= getPalo();
-                //Nos dice el palo que tiene la carta cambiandolo a char
+            p= baraja[i].getPalo();
+            //Nos dice el palo que tiene la carta cambiandolo a char
                 switch (p)
                 {
                     case 0:
@@ -180,8 +178,8 @@ namespace libreriaNueva
 
             for(int i=0; i<numC;i++)
                 lineaCarta=lineaCarta+"└───────┘";
-            lineaCarta=lineaCarta+"\n";
-
+            lineaCarta=lineaCarta+"\n";  
+            
             return lineaCarta;
         }
 
