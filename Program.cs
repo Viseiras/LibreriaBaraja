@@ -225,6 +225,10 @@ namespace libreriaNueva
             }
             
         }
+        public int getTamActual()
+        {
+            return TAM-contPedidos;
+        }
 
     } //fin de la clase Baraja
 
