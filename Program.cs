@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using libreriaNueva;
 using System.Runtime.ConstrainedExecution;
 
-namespace libreriaNueva
+//Inicialización del paquete LibreriaBaraja
+namespace LibreriaBaraja
 {
     //enum llamado ePalo con los cuatro palos de la baraja del Poker
     public enum ePalo
@@ -46,29 +47,33 @@ namespace libreriaNueva
             this.palo = palo;
             this.valor = valor;
         }
+        //constructor vacío de Carta
         public Carta()
         {
 
         }
 
         //setters y getters
+        //retorna el palo de la carta
         public int getPalo()
         {
             return (int)palo;
         }
-
+        //retorna el valor de la carta
         public int getValor()
         {
             return (int)valor;
         }
         //métodos
+        //Muestra la carta visualmente
         public String MuestraCarta()
         {
-
+            //Inicialización de variables del método
             int p = getPalo();
             int v = getValor();
             char simbolo = ' ';//♠', '♦', '♥', '♣'
 
+            //Nos convierte el valor numerico de ePalo a un caracter visual del palo
             switch (p)
             {
                 case 0:
@@ -96,6 +101,7 @@ namespace libreriaNueva
     //clase Baraja con un list de cartas como atributo, un contador de cartas pedidas y un tamaño de baraja
     public class Baraja
     {
+        //Declaración de los atributos de la clase baraja
         private List<Carta> baraja; //la sintaxis es List<Carta> baraja = new List<Carta>(tamaño);
         private int contPedidos = 0; //contador que nos sirve para evitar que el metodo PideCarta devuelva repetidas.
         private const int TAM = 52; //constante con el tamaño de la baraja
@@ -107,6 +113,7 @@ namespace libreriaNueva
         }
 
         //métodos
+        //Introduce todas las cartas en una baraja de manera ordenada
         public void RellenaBaraja()
         {
             for (int p = 0; p < 4; p++)// Bucle de palos, 4 pasadas
@@ -119,9 +126,10 @@ namespace libreriaNueva
             }
         }
 
+        //Usa el método MuestraCarta repetidas veces hasta quedarse sin cartas
         public void MuestraCartas()
         {
-            for (int i = 0; i < TAM; i++)
+            for (int i = 0; i < (TAM-contPedidos); i++)
             {
                 Console.WriteLine(baraja[i].MuestraCarta());
             }
@@ -129,6 +137,7 @@ namespace libreriaNueva
         //metodo que necesita como parametro el numero de cartas a mostrar
         public String MuestraCartasHorizontal(int numC)
         {
+            //Declaración de variables de el método
             String lineaCarta = "";
 
             int p; //palo
@@ -140,9 +149,11 @@ namespace libreriaNueva
                 lineaCarta += "┌───────┐";
             lineaCarta += "\n"; 
 
+            //bucle que nos crea la fila con el valor
             for (int i = 0; i < numC; i++)
             {
                 v = baraja[i].getValor();
+                //Comprueba si es mayor a 2 digitos el valor 
                 if (v > 9)
                     lineaCarta += "│" + v + "     |";
                 else
@@ -150,6 +161,7 @@ namespace libreriaNueva
             }
             lineaCarta += "\n";
 
+            //bucle que nos crea las filas vacías (numC multiplicado por 3)
             for (int i = 0; i < (numC * 3); i++)
             {
                 if (i % numC != numC - 1)
@@ -158,6 +170,7 @@ namespace libreriaNueva
                     lineaCarta += "│       |\n";
             }
 
+            //bucle que nos crea la fila con el palo 
             for (int i = 0; i < numC; i++)
             {
                 //nos devuelve el palo de la carta para que en simbolo se almacene el del correspondiente palo
@@ -181,6 +194,7 @@ namespace libreriaNueva
             }
             lineaCarta += "\n";
 
+            //bucle que nos crea la parte final de la carta
             for (int i = 0; i < numC; i++)
                 lineaCarta += "└───────┘";
             lineaCarta += "\n";
@@ -188,6 +202,7 @@ namespace libreriaNueva
             return lineaCarta;
         }
 
+        //Nos devuelve una carta y reduce el tamaño restante con cada ejecución
         public Carta PideCarta()
         {
             try
@@ -210,7 +225,8 @@ namespace libreriaNueva
                 var random = new Random();
                 Carta aux;
 
-                for (int i = 0; i < TAM; i++)
+                //bucle que mezcla las cartas aleatoriamente pasando por todas
+                for (int i = 0; i < (TAM-contPedidos); i++)
                 {
                     int a2 = random.Next(1, 52);
 
@@ -225,7 +241,8 @@ namespace libreriaNueva
             }
             
         }
-
+        
+        //Devuelve el tamaño actual de la baraja (Tamaño total menos pedidas)
         public int getTamActual()
         {
             return TAM-contPedidos;
