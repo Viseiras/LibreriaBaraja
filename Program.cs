@@ -201,7 +201,7 @@ namespace libreriaNueva
                 return null;
             }
         }
-
+        // Método que mezcla las cartas de una baraja. La baraja debe ser rellenada anteriormente
         public void MezclaBaraja()
         {
             try //try que controla que salte un mensaje de error cuandos se llame a este metodo sin haber rellenado la baraja
