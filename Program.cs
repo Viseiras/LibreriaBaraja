@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using libreriaNueva;
@@ -195,7 +195,7 @@ namespace libreriaNueva
                 contPedidos++;
                 return baraja[contPedidos];
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 Console.WriteLine("Fin de la baraja");
                 return null;
@@ -219,38 +219,17 @@ namespace libreriaNueva
                     baraja[a2] = aux;
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                Console.WriteLine("Error al mezclar, no hay cartas en la baraja.");
+                Console.WriteLine("ERROR: No hay cartas en la baraja");
             }
             
         }
+
         public int getTamActual()
         {
             return TAM-contPedidos;
         }
 
     } //fin de la clase Baraja
-
-    public class programa
-    {
-        static void Main(string[] args)
-        {
-            Baraja baraja = new Baraja();
-            
-            baraja.RellenaBaraja();
-            baraja.MezclaBaraja();
-
-            //probando el metodo PideCarta
-            
-            Carta c;
-            while ( (c = baraja.PideCarta()) != null )
-            {
-                Console.WriteLine(c.MuestraCarta());
-            }
-
-            //probando el metodo MuestraCartasHorizontal
-            //Console.WriteLine(baraja.MuestraCartasHorizontal(8));
-        }
-    }
 }
