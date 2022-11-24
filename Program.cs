@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using libreriaNueva;
+using LibreriaBaraja;
 using System.Runtime.ConstrainedExecution;
 
 //Inicialización del paquete LibreriaBaraja
@@ -96,6 +96,77 @@ namespace LibreriaBaraja
             }
             return "┌───────┐\n" + "│" + v + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│      " + simbolo + "|\n" + "└───────┘\n";
         }
+
+        //metodo que necesita como parametro lista de cartas
+        public static String MuestraCartasHorizontal(List<Carta> cartas)
+        {
+            //Declaración de variables de el método
+            String lineaCarta = "";
+
+            int p; //palo
+            int v; //valor
+            char simbolo = ' ';//♠', '♦', '♥', '♣
+
+
+            //bucle en el que se crea la parte superior de la carta tantas veces como numero se le haya pasado al metodo como parametro
+            foreach(Carta c in cartas) 
+                lineaCarta += "┌───────┐";
+            lineaCarta += "\n"; 
+
+            //bucle que nos crea la fila con el valor
+            foreach(Carta c in cartas) 
+            {
+                v = c.getValor();
+                //Comprueba si es mayor a 2 digitos el valor 
+                if (v > 9)
+                    lineaCarta += "│" + v + "     |";
+                else
+                    lineaCarta += "│" + v + "      |";
+            }
+            lineaCarta += "\n";
+
+            //bucle que nos crea las filas vacías (cartas.Count multiplicado por 3)
+            for(int i=0;i<cartas.Count*3;i++) 
+            {
+                if(i%cartas.Count!=cartas.Count-1)
+                    lineaCarta += "│       |";
+                else
+                    lineaCarta += "│       |\n";
+            }
+
+            //bucle que nos crea la fila con el palo 
+            foreach(Carta c in cartas) 
+            {
+                //nos devuelve el palo de la carta para que en simbolo se almacene el del correspondiente palo
+                p = c.getPalo();
+                switch (p)
+                {
+                    case 0:
+                        simbolo = '♣';
+                        break;
+                    case 1:
+                        simbolo = '♥';
+                        break;
+                    case 2:
+                        simbolo = '♦';
+                        break;
+                    case 3:
+                        simbolo = '♠';
+                        break;
+                }
+                lineaCarta += "│      " + simbolo + "|";
+            }
+            lineaCarta += "\n";
+
+            //bucle que nos crea la parte final de la carta
+            foreach(Carta c in cartas) 
+                lineaCarta += "└───────┘";
+            lineaCarta += "\n";
+
+            return lineaCarta;
+        }
+
+
     } //fin de la clase Carta
 
     //clase Baraja con un list de cartas como atributo, un contador de cartas pedidas y un tamaño de baraja
@@ -134,74 +205,7 @@ namespace LibreriaBaraja
                 Console.WriteLine(baraja[i].MuestraCarta());
             }
         }
-        //metodo que necesita como parametro el numero de cartas a mostrar
-        public String MuestraCartasHorizontal(int numC)
-        {
-            //Declaración de variables de el método
-            String lineaCarta = "";
-
-            int p; //palo
-            int v; //valor
-            char simbolo = ' ';//♠', '♦', '♥', '♣
-
-            //bucle en el que se crea la parte superior de la carta tantas veces como numero se le haya pasado al metodo como parametro
-            for (int i = 0; i < numC; i++) 
-                lineaCarta += "┌───────┐";
-            lineaCarta += "\n"; 
-
-            //bucle que nos crea la fila con el valor
-            for (int i = 0; i < numC; i++)
-            {
-                v = baraja[i].getValor();
-                //Comprueba si es mayor a 2 digitos el valor 
-                if (v > 9)
-                    lineaCarta += "│" + v + "     |";
-                else
-                    lineaCarta += "│" + v + "      |";
-            }
-            lineaCarta += "\n";
-
-            //bucle que nos crea las filas vacías (numC multiplicado por 3)
-            for (int i = 0; i < (numC * 3); i++)
-            {
-                if (i % numC != numC - 1)
-                    lineaCarta += "│       |";
-                else
-                    lineaCarta += "│       |\n";
-            }
-
-            //bucle que nos crea la fila con el palo 
-            for (int i = 0; i < numC; i++)
-            {
-                //nos devuelve el palo de la carta para que en simbolo se almacene el del correspondiente palo
-                p = baraja[i].getPalo();
-                switch (p)
-                {
-                    case 0:
-                        simbolo = '♣';
-                        break;
-                    case 1:
-                        simbolo = '♥';
-                        break;
-                    case 2:
-                        simbolo = '♦';
-                        break;
-                    case 3:
-                        simbolo = '♠';
-                        break;
-                }
-                lineaCarta += "│      " + simbolo + "|";
-            }
-            lineaCarta += "\n";
-
-            //bucle que nos crea la parte final de la carta
-            for (int i = 0; i < numC; i++)
-                lineaCarta += "└───────┘";
-            lineaCarta += "\n";
-
-            return lineaCarta;
-        }
-
+        
         //Nos devuelve una carta y reduce el tamaño restante con cada ejecución
         public Carta PideCarta()
         {
