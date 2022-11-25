@@ -1,4 +1,4 @@
-ease choose a different name and try agusing System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using LibreriaBaraja;
@@ -92,9 +92,9 @@ namespace LibreriaBaraja
 
             if (v > 9) //si el valor es mayor que 9 hay que quitar algun espacio en blanco porque el nº de chars aumenta
             {
-                return "┌───────┐\n" + "│" + v + "     |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│      " + simbolo + "|\n" + "└───────┘\n";
+                return "┌───────┐\n" + "│" + v + "     │\n" + "│       │\n" + "│       │\n" + "│       │\n" + "│      " + simbolo + "│\n" + "└───────┘\n";
             }
-            return "┌───────┐\n" + "│" + v + "      |\n" + "│       |\n" + "│       |\n" + "│       |\n" + "│      " + simbolo + "|\n" + "└───────┘\n";
+            return "┌───────┐\n" + "│" + v + "      │\n" + "│       │\n" + "│       │\n" + "│       │\n" + "│      " + simbolo + "│\n" + "└───────┘\n";
         }
 
         //metodo que necesita como parametro lista de cartas
@@ -119,9 +119,9 @@ namespace LibreriaBaraja
                 v = c.getValor();
                 //Comprueba si es mayor a 2 digitos el valor 
                 if (v > 9)
-                    lineaCarta += "│" + v + "     |";
+                    lineaCarta += "│" + v + "     │";
                 else
-                    lineaCarta += "│" + v + "      |";
+                    lineaCarta += "│" + v + "      │";
             }
             lineaCarta += "\n";
 
@@ -129,9 +129,9 @@ namespace LibreriaBaraja
             for(int i=0;i<cartas.Count*3;i++) 
             {
                 if(i%cartas.Count!=cartas.Count-1)
-                    lineaCarta += "│       |";
+                    lineaCarta += "│       │";
                 else
-                    lineaCarta += "│       |\n";
+                    lineaCarta += "│       │\n";
             }
 
             //bucle que nos crea la fila con el palo 
@@ -154,7 +154,7 @@ namespace LibreriaBaraja
                         simbolo = '♠';
                         break;
                 }
-                lineaCarta += "│      " + simbolo + "|";
+                lineaCarta += "│      " + simbolo + "│";
             }
             lineaCarta += "\n";
 
@@ -226,7 +226,7 @@ namespace LibreriaBaraja
             try //try que controla que salte un mensaje de error cuandos se llame a este metodo sin haber rellenado la baraja
             {
                 contPedidos = 0;
-                var random = new Random();
+                Random random = new Random();
                 Carta aux;
 
                 //bucle que mezcla las cartas aleatoriamente pasando por todas
